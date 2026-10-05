@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy monthsary, lablab 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky-top:#f4faff; --sky-mid:#dcedfa; --sky-low:#bcdcf3;
+  --ink:#24475f; --soft:#6a8ca6; --blue:#8bbfe4; --deep:#5a93bf; --paper:#fdfeff; --hair:rgba(90,147,191,.28);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--ink);
+  font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-weight:400;font-size:21px;line-height:1.7;
+  background:
+    radial-gradient(900px 500px at 15% -5%,rgba(255,255,255,.95),transparent 60%),
+    radial-gradient(700px 500px at 100% 30%,rgba(255,255,255,.55),transparent 65%),
+    linear-gradient(180deg,var(--sky-top),var(--sky-mid) 55%,var(--sky-low));
+  background-attachment:fixed;overflow-x:hidden;
+  padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);
+}
+/* floating petals */
+#petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.petal{position:absolute;top:-30px;width:10px;height:14px;background:rgba(255,255,255,.85);border-radius:80% 0 80% 0;box-shadow:0 0 8px rgba(255,255,255,.8);animation:fall linear infinite}
+@keyframes fall{to{transform:translate3d(var(--dx),110vh,0) rotate(540deg)}}
+
+main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:70px 24px 90px}
+
+/* hero */
+.hero{text-align:center;padding-top:20px}
+.kicker{font-style:italic;color:var(--soft);font-size:19px;letter-spacing:.04em;margin:0 0 6px}
+.names{margin:0;font-weight:300;font-size:clamp(40px,10.5vw,72px);line-height:1.1;letter-spacing:.01em}
+.names [contenteditable]{outline:none;padding:0 .08em;border-bottom:1px solid transparent;transition:border-color .3s}
+.names [contenteditable]:hover,.names [contenteditable]:focus{border-bottom-color:var(--hair)}
+.amp{font-family:"Pinyon Script","Snell Roundhand",cursive;color:var(--deep);font-size:1.15em;padding:0 .1em}
+.orn{display:flex;align-items:center;justify-content:center;gap:14px;margin:30px auto 24px;color:var(--blue)}
+.orn::before,.orn::after{content:"";height:1px;width:min(26vw,120px);background:linear-gradient(90deg,transparent,var(--hair))}
+.orn::after{transform:scaleX(-1)}
+.orn svg{width:18px;height:18px;fill:var(--blue)}
+.count{font-size:clamp(54px,14vw,92px);font-weight:300;line-height:1;color:var(--deep);font-variant-numeric:lining-nums}
+.unit{font-style:italic;color:var(--soft);margin-top:4px}
+.since{margin-top:14px;font-size:17px;color:var(--soft)}
+.since input{font:inherit;font-size:17px;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--hair);padding:2px 6px;text-align:center}
+.since input:focus{outline:none;border-bottom-color:var(--deep)}
+
+/* envelope */
+.hint{text-align:center;font-style:italic;color:var(--soft);margin:70px 0 22px;min-height:1.7em}
+.stage{position:relative;width:min(100%,400px);height:290px;margin:0 auto}
+.env{all:unset;box-sizing:border-box;position:absolute;left:0;right:0;bottom:0;height:200px;cursor:pointer;border-radius:4px;
+  background:linear-gradient(180deg,#cfe6f7,#b4d6ef);box-shadow:0 30px 50px -18px rgba(60,110,150,.45),0 2px 0 rgba(255,255,255,.7) inset}
+.env:focus-visible{outline:2px solid var(--deep);outline-offset:6px}
+.env .pocket{position:absolute;inset:0;border-radius:4px;z-index:3;
+  background:
+    linear-gradient(to top right,transparent 49.6%,rgba(255,255,255,.55) 50%,#c6e0f4 50.6%) left/50.4% 100% no-repeat,
+    linear-gradient(to top left,transparent 49.6%,rgba(255,255,255,.55) 50%,#c6e0f4 50.6%) right/50.4% 100% no-repeat,
+    linear-gradient(0deg,#bddbf1 0,#cfe6f7 100%);
+  clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
+.flap{position:absolute;left:0;right:0;top:0;height:118px;z-index:4;transform-origin:top;transition:transform .8s cubic-bezier(.6,.05,.3,1),z-index 0s .4s;
+  background:linear-gradient(180deg,#e4f1fb,#bcdaf1);clip-path:polygon(0 0,100% 0,50% 100%);filter:drop-shadow(0 3px 2px rgba(60,110,150,.25))}
+.seal{position:absolute;left:50%;top:84px;width:52px;height:52px;margin-left:-26px;border-radius:50%;z-index:5;display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 30%,#8fbde0,#4f86b2 70%);color:#eaf5fd;font-family:"Pinyon Script",cursive;font-size:24px;
+  box-shadow:0 4px 10px rgba(40,90,130,.4),inset 0 0 0 3px rgba(255,255,255,.2);transition:opacity .35s,transform .5s}
+.open .flap{transform:rotateX(180deg);z-index:1}
+.open .seal{opacity:0;transform:scale(.6)}
+.card{position:absolute;left:6%;right:6%;bottom:14px;height:180px;background:var(--paper);z-index:2;border-radius:2px;
+  transition:transform 1s cubic-bezier(.4,0,.2,1) .5s,opacity .6s ease 1.2s}
+.open .card{transform:translateY(-120px);opacity:0}
+
+/* letter */
+.letter{display:none;position:relative;margin:30px auto 0;padding:56px 44px 50px;background:var(--paper);text-align:center;
+  box-shadow:0 40px 70px -30px rgba(60,110,150,.5),0 0 0 1px rgba(139,191,228,.25);animation:unfold 1.2s cubic-bezier(.2,.7,.2,1) both}
+.letter.show{display:block}
+.letter::before{content:"";position:absolute;inset:12px;border:1px solid var(--hair);pointer-events:none}
+@keyframes unfold{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1;transform:none}}
+.letter [contenteditable]{outline:none;transition:background .3s}
+.letter [contenteditable]:focus{background:rgba(139,191,228,.12)}
+.greet{font-family:"Pinyon Script","Snell Roundhand",cursive;font-size:clamp(38px,9vw,50px);line-height:1.2;color:var(--deep);margin:0 0 22px}
+.body{font-weight:400;font-size:clamp(19px,4.4vw,22px);line-height:1.8;text-align:left;margin:0}
+.body::first-letter{font-family:"Pinyon Script",cursive;font-size:3.1em;float:left;line-height:.8;padding:6px 10px 0 0;color:var(--deep)}
+.sign{font-family:"Pinyon Script","Snell Roundhand",cursive;font-size:clamp(30px,7.5vw,38px);color:var(--deep);margin:36px 0 0;text-align:center}
+.tools{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.tools[hidden]{display:none}
+.btn{font:inherit;font-size:17px;font-style:italic;color:var(--ink);background:rgba(255,255,255,.55);border:1px solid var(--hair);border-radius:999px;padding:7px 22px;cursor:pointer;backdrop-filter:blur(6px);transition:background .25s,border-color .25s}
+.btn:hover{background:#fff;border-color:var(--deep)}
+.btn:focus-visible{outline:2px solid var(--deep);outline-offset:3px}
+
+/* music control */
+.music{position:fixed;z-index:10;top:calc(16px + env(safe-area-inset-top,0px));right:16px}
+.music .btn{display:flex;align-items:center;gap:10px;padding:7px 18px 7px 14px}
+.eq{display:inline-flex;gap:3px;align-items:flex-end;height:14px}
+.eq i{width:2px;height:3px;background:var(--deep);border-radius:2px}
+.on .eq i{animation:eq 1.3s ease-in-out infinite}
+.on .eq i:nth-child(2){animation-delay:.25s}.on .eq i:nth-child(3){animation-delay:.5s}.on .eq i:nth-child(4){animation-delay:.75s}
+@keyframes eq{50%{height:14px}}
+
+footer{text-align:center;margin-top:50px;color:var(--soft);font-style:italic;font-size:17px}
+@media (max-width:480px){.letter{padding:46px 26px 40px}}
+@media print{body{background:#fff}#petals,.music,.hero,.hint,.stage,.tools,footer{display:none!important}.letter{display:block!important;box-shadow:none;animation:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="petals" aria-hidden="true"></div>
+<!-- MUSIC PLACEHOLDER: put your song file in the same folder as this page and set its name in MUSIC_SRC (in the script below). -->
+<audio id="song" loop preload="auto"></audio>
+<div class="music" id="music"><button class="btn" id="musicBtn" aria-pressed="false"><span class="eq"><i></i><i></i><i></i><i></i></span><span id="musicLbl">Play music</span></button></div>
+
+<main>
+  <section class="hero">
+    <p class="kicker">For you, Always.</p>
+    <h1 class="names">Happy Monthsary,<br><span class="amp">Lablab</span></h1>
+    <div class="orn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 5 6.2 5c2.1 0 3.9 1.2 5.8 3.4C13.900 6.200 15.700 5 17.800 5c3.300 0 5.300 3.400 3.800 6.800C19.500 16.400 12 21 12 21z"/></svg></div>
+    <div class="count" id="count">&mdash;</div>
+    <div class="unit" id="unit">choose the day it began</div>
+    <div class="since"><label>Since <input type="date" id="since"></label></div>
+  </section>
+
+  <p class="hint" id="hint">A letter is waiting for you. Touch the seal.</p>
+  <div class="stage" id="stage">
+    <button class="env" id="env" aria-label="Open the letter">
+      <div class="card"></div>
+      <div class="pocket"></div>
+      <div class="flap"></div>
+      <div class="seal" id="seal">&hearts;</div>
+    </button>
+  </div>
+
+  <article class="letter" id="letter" aria-label="Love letter">
+    <p class="greet" contenteditable="true" id="greet" spellcheck="false">Happy monthsary, lablabko. 🤗</p>
+    <p class="body" contenteditable="true" id="body" spellcheck="false">It’s been 548 days since I met you, and every single one has only made me love you more. Ang dami na nating pinagdaanan, and kahit hindi naging madali yung situation natin ngayon, one thing that never changed is how much I love you. ❤️<br><br>Ikaw po, ikaw pa rin yung gusto kong makasama. And si Kiel, sainyo ko gusto i spend ang buhay ko. Sainyo ko naramdaman na lahat ng pagod, paghihintay, at pagtatyaga ay magiging worth it, kasi para sakin, hindi kayang bayaran ng pera yung makita ko kayong masaya.<br><br>Hindi po natin kailangan maging perfect para maging masaya tayong tatlo. Gusto ko yung may simple days, may mga problems din minsan, pero alam kong kaya nating pag-usapan at ayusin. Yung si Kiel lumalaki na comfortable, mararamdaman niya na mahal natin siya, and makita niya na masaya tayong nagsasama.<br><br>I want to see you happy langlang. Gusto ko yung makita kitang magaan at masaya ka sa buhay. And for Kiel, gusto ko rin na paglaki niya, maramdaman at makita niya yung totoong pagmamahal, and that he can have a happy and peaceful life.<br><br>Hindi ko naman sinasabi na magiging perfect lahat kapag tayo. Alam ko magkakaroon pa rin tayo ng problems, misunderstandings, and difficult days. Pero pag dumating yung time na magkasama na tayo, gusto ko yung pareho nating piliing palagi ang isa’t isa, kahit hindi perfect ang lahat.<br><br>Ako, nandito lang ako palagi lablab. Hindi dahil may hinihintay akong kapalit or kailangan kong madaliin ang kahit ano, pero dahil mahal kita. Mahal ko kayo ni Kiel, and I’ll always care for both of you.<br><br>Happy monthsary, lablabko. Thank you for being someone I love this much, and thank you din kay Kiel for becoming someone so important to me.<br><br>I just want you to know that no matter how strong the storm gets or how dark the skies may become, I’ll always be here beside you.</p>
+    <p class="sign" contenteditable="true" id="sign" spellcheck="false">I love you both so much. ❤️🤗</p>
+  </article>
+
+  <div class="tools" id="tools" hidden>
+    <button class="btn" id="reread">Close letter</button>
+  </div>
+</main>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var S={get:function(k){try{return localStorage.getItem('ourletter-v3:'+k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem('ourletter-v3:'+k,v)}catch(e){}}};
+
+  // petals
+  var P=$('petals');
+  for(var i=0;i<16;i++){
+    var p=document.createElement('span');p.className='petal';
+    p.style.left=Math.random()*100+'%';
+    p.style.setProperty('--dx',(Math.random()*160-80)+'px');
+    p.style.animationDuration=(16+Math.random()*16)+'s';
+    p.style.animationDelay=(-Math.random()*30)+'s';
+    p.style.opacity=.4+Math.random()*.5;
+    var s=.6+Math.random()*.9;p.style.width=10*s+'px';p.style.height=14*s+'px';
+    P.appendChild(p);
+  }
+
+  // editable text, saved on this device
+  ['greet','sign'].forEach(function(id){
+    var v=S.get(id+'-r2');if(v)$(id).textContent=v;
+    $(id).addEventListener('input',function(){S.set(id+'-r2',$(id).textContent)});
+    $(id).addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();this.blur()}});
+  });
+  var bv=S.get('body-r2');if(bv)$('body').innerHTML=bv;
+  $('body').addEventListener('input',function(){S.set('body-r2',$('body').innerHTML)});
+
+  // days together
+  function count(){
+    var v=$('since').value;
+    if(!v){$('count').textContent='\u2014';$('unit').textContent='choose the day it began';return}
+    var d=Math.floor((Date.now()-new Date(v+'T00:00:00').getTime())/864e5);
+    var n=Math.abs(d);
+    $('count').textContent=n.toLocaleString();
+    $('unit').textContent=d<0?(n===1?'day until we begin':'days until we begin'):(n===1?'day of loving you':'days of loving you');
+  }
+  var sv=S.get('since');if(sv)$('since').value=sv;
+  $('since').addEventListener('change',function(){S.set('since',this.value);count()});
+  count();
+
+  // envelope
+  function openIt(){
+    $('stage').classList.add('open');$('hint').textContent='';
+    setTimeout(function(){
+      $('letter').classList.add('show');$('tools').hidden=false;
+      $('letter').scrollIntoView({behavior:'smooth',block:'start'});
+    },1300);
+    if(!playing)toggle();
+  }
+  $('env').addEventListener('click',function(){if(!$('stage').classList.contains('open'))openIt()});
+  $('reread').addEventListener('click',function(){
+    $('letter').classList.remove('show');$('tools').hidden=true;$('stage').classList.remove('open');
+    $('hint').textContent='Touch the seal to read it again.';window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  // ===== MUSIC PLACEHOLDER =====
+  // Replace the file name below with your own song (mp3, m4a, wav or ogg).
+  // Keep the song in the same folder as this HTML file.
+  var MUSIC_SRC='song.mp3';
+  // =============================
+  var song=$('song'),playing=false;
+  song.src=MUSIC_SRC;song.volume=.7;
+  function ui(){
+    $('music').classList.toggle('on',playing);
+    $('musicBtn').setAttribute('aria-pressed',playing);
+    $('musicLbl').textContent=playing?'Pause music':'Play music';
+  }
+  function toggle(){
+    if(!playing){
+      var r=song.play();
+      if(r&&r.then){r.then(function(){playing=true;ui()}).catch(function(){playing=false;ui();$('musicLbl').textContent='Play music'})}
+      else{playing=true;ui()}
+    }else{song.pause();playing=false;ui()}
+  }
+  $('musicBtn').addEventListener('click',toggle);
+})();
+</script>
+</body>
+</html>
